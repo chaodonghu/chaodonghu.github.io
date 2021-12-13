@@ -3,10 +3,10 @@
   <channel>
     <title>Dong Hu</title>
     <description></description>
-    <link>http://chaodonghu.github.io</link>
-    <atom:link href="http://chaodonghu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 12 Sep 2021 20:02:01 -0400</pubDate>
-    <lastBuildDate>Sun, 12 Sep 2021 20:02:01 -0400</lastBuildDate>
+    <link>http://localhost:4000</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 12 Sep 2021 20:02:07 -0400</pubDate>
+    <lastBuildDate>Sun, 12 Sep 2021 20:02:07 -0400</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -66,8 +66,8 @@
 &lt;p&gt;&lt;img src=&quot;/assets/images/myplanet/3.jpg&quot; alt=&quot;MyPlanetCohortActivity&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 04 Sep 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/09/04/myplanet/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/09/04/myplanet/</guid>
+        <link>http://localhost:4000/2017/09/04/myplanet/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/09/04/myplanet/</guid>
         
         <category>Portfolio</category>
         
@@ -107,8 +107,8 @@
 &lt;p&gt;&lt;a href=&quot;http://itineroo.herokuapp.com/&quot;&gt;Demo&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 08 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/08/itineroo/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/08/itineroo/</guid>
+        <link>http://localhost:4000/2017/07/08/itineroo/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/08/itineroo/</guid>
         
         <category>Portfolio</category>
         
@@ -144,8 +144,8 @@
 &lt;a href=&quot;https://github.com/chaodonghu/phaser_drake_pong&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 08 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/08/phaser-games/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/08/phaser-games/</guid>
+        <link>http://localhost:4000/2017/07/08/phaser-games/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/08/phaser-games/</guid>
         
         <category>Portfolio</category>
         
@@ -189,8 +189,8 @@
 &lt;p&gt;Poster presentation for the Canadian Physiotherapy Association describing the role of robotic exoskeletons in SCI rehabilitation. A narrative synthesis of published data regarding the safety and efficacy of the technology of exoskeletons.&lt;/p&gt;
 </description>
         <pubDate>Sat, 08 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/08/poster-presentations/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/08/poster-presentations/</guid>
+        <link>http://localhost:4000/2017/07/08/poster-presentations/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/08/poster-presentations/</guid>
         
         <category>Blog</category>
         
@@ -222,8 +222,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 04 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/04/chatty_app/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/04/chatty_app/</guid>
+        <link>http://localhost:4000/2017/07/04/chatty_app/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/04/chatty_app/</guid>
         
         <category>Portfolio</category>
         
@@ -253,8 +253,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 04 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/04/tweeter/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/04/tweeter/</guid>
+        <link>http://localhost:4000/2017/07/04/tweeter/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/04/tweeter/</guid>
         
         <category>Portfolio</category>
         
@@ -310,8 +310,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 04 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/04/tiny-url-shortener/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/04/tiny-url-shortener/</guid>
+        <link>http://localhost:4000/2017/07/04/tiny-url-shortener/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/04/tiny-url-shortener/</guid>
         
         <category>Portfolio</category>
         
@@ -361,8 +361,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 04 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/04/bonappetit_food_ordering/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/04/bonappetit_food_ordering/</guid>
+        <link>http://localhost:4000/2017/07/04/bonappetit_food_ordering/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/04/bonappetit_food_ordering/</guid>
         
         <category>Portfolio</category>
         
