@@ -9,6 +9,8 @@ tags:
 ---
 I had always wondered how businesses or influencers are able to gain hundreds of thousands of followers overnight. Many accounts go instantly viral after a certain tweet or post but I was curious if there was more to it. There are some accounts that have hundreds of thousands of followers but only one or two posts. I realized that there was this concept of "buying" instagram followers or likes, a pay for followers businesses that several companies offer by attracting real instagram users to your account instead of spam or bot accounts. Simply put, wouldn't that just mean liking and following/unfollowing accounts that are similar to yours? This inspired me to make 3 scripts that were relatively easy to use and required zero setup and configuration to mimic this pay for followers/likes model.
 
+<hr />
+
 #### Mass follow
 
 I started off thinking about how one could gain followers. There is a notion of following back users that have followed you, so what if you followed users of a certain page/account to garner similar interest. For example, following all the followers of a ontario hiking page would prompt the followed accounts to click on my account after I follow theirs. This simple engagement tactic would not guarantee a new follower but possibly a page hit or post like on your most recent posts.
