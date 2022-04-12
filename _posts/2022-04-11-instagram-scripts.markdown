@@ -7,7 +7,9 @@ author: Dong Hu
 tags:
   - Portfolio
 ---
-I had always wondered how businesses or influencers were able to gain hundreds of thousands of followers overnight. Some going instantly viral after a certain tweet or post but some due to the nature of "buying" instagram followers or likes. There is this pay for followers businesses that several companies offer by attracting real instagram users to your account instead of spam or bot accounts, however I thought wouldn't that just mean liking and following/unfollowing accounts that are similar to yours? This inspired me to make 3 scripts that were relatively easy to use without any installation required to mimic this pay for followers/likes model.
+I had always wondered how businesses or influencers were able to gain hundreds of thousands of followers overnight. Some going instantly viral after a certain tweet or post but some due to the nature of "buying" instagram followers or likes. There is this pay for followers businesses that several companies offer by attracting real instagram users to your account instead of spam or bot accounts, however I thought wouldn't that just mean liking and following/unfollowing accounts that are similar to yours? This inspired me to make 3 scripts that were relatively easy to use and required zero setup and configuration to mimic this pay for followers/likes model.
 
-#### TODO
+#### Mass follow
+
+
 <script src="https://gist.github.com/chaodonghu/c25c7ee3e3eb85c0a0de051892e596a4.js"></script>
