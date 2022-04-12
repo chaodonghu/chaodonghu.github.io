@@ -5,13 +5,15 @@
     <description></description>
     <link>http://chaodonghu.github.io</link>
     <atom:link href="http://chaodonghu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 12 Apr 2022 17:40:39 -0400</pubDate>
-    <lastBuildDate>Tue, 12 Apr 2022 17:40:39 -0400</lastBuildDate>
+    <pubDate>Tue, 12 Apr 2022 17:53:33 -0400</pubDate>
+    <lastBuildDate>Tue, 12 Apr 2022 17:53:33 -0400</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>Instagram Mass Follow, Unfollow, Like Scripts</title>
         <description>&lt;p&gt;I had always wondered how businesses or influencers are able to gain hundreds of thousands of followers overnight. Many accounts go instantly viral after a certain tweet or post but I was curious if there was more to it. There are some accounts that have hundreds of thousands of followers but only one or two posts. I realized that there was this concept of “buying” instagram followers or likes, a pay for followers businesses that several companies offer by attracting real instagram users to your account instead of spam or bot accounts. Simply put, wouldn’t that just mean liking and following/unfollowing accounts that are similar to yours? This inspired me to make 3 scripts that were relatively easy to use and required zero setup and configuration to mimic this pay for followers/likes model.&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h4 id=&quot;mass-follow&quot;&gt;Mass follow&lt;/h4&gt;
 
