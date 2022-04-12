@@ -3,7 +3,7 @@ layout: post
 title: "Instagram Mass Follow, Unfollow, Like Scripts"
 date: 2022-04-11
 description: 3 separate Google Chrome scripts that allows (1) user to mass follow instagram users on another's profile, (2) user to mass unfollow instagram users on another's profile and (3) user to mass like posts on a certain hashtag/search query.
-image:
+image: /assets/images/myplanet/1.jpg
 author: Dong Hu
 tags:
   - Portfolio
