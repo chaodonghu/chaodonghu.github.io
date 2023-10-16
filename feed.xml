@@ -3,10 +3,10 @@
   <channel>
     <title>Dong Hu</title>
     <description></description>
-    <link>http://localhost:4000</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 21 Jun 2023 12:28:40 -0400</pubDate>
-    <lastBuildDate>Wed, 21 Jun 2023 12:28:40 -0400</lastBuildDate>
+    <link>http://chaodonghu.github.io</link>
+    <atom:link href="http://chaodonghu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 15 Oct 2023 21:37:33 -0400</pubDate>
+    <lastBuildDate>Sun, 15 Oct 2023 21:37:33 -0400</lastBuildDate>
     <generator>Jekyll v3.8.7</generator>
     
       <item>
@@ -25,8 +25,8 @@
 
 </description>
         <pubDate>Mon, 11 Apr 2022 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2022/04/11/instagram-scripts/</link>
-        <guid isPermaLink="true">http://localhost:4000/2022/04/11/instagram-scripts/</guid>
+        <link>http://chaodonghu.github.io/2022/04/11/instagram-scripts/</link>
+        <guid isPermaLink="true">http://chaodonghu.github.io/2022/04/11/instagram-scripts/</guid>
         
         <category>Portfolio</category>
         
@@ -35,7 +35,7 @@
     
       <item>
         <title>Girl Guides Canada - Sentiment Analysis App</title>
-        <description>&lt;p&gt;I was apart of the &lt;a href=&quot;https://www.myplanet.com/&quot;&gt;Myplanet&lt;/a&gt; 2017 &lt;a href=&quot;https://medium.com/myplanet-musings/myplanet-fellowship-2-0-e71c46c28364&quot;&gt;fellowship&lt;/a&gt; class which gave 18 students a real, hands-on experience with agile, as well as the ability to implement AI and the latest development platforms to build a product for a non-for-profit/charity.&lt;/p&gt;
+        <description>&lt;p&gt;I was apart of the &lt;a href=&quot;https://orium.com/&quot;&gt;Myplanet now Orium&lt;/a&gt; 2017 &lt;a href=&quot;https://blog.orium.com/myplanet-fellowship-2-0-e71c46c28364&quot;&gt;fellowship&lt;/a&gt; class which gave 18 students a real, hands-on experience with agile, as well as the ability to implement AI and the latest development platforms to build a product for a non-for-profit/charity.&lt;/p&gt;
 
 &lt;p&gt;As an added bonus, Myplanet partnered up with IBM meaning that we also had the ability to connect with some of the latest in cognitive tech while maintaining a community-oriented charitable component.&lt;/p&gt;
 
@@ -53,8 +53,6 @@
 &lt;h4 id=&quot;our-teams-problem-statement&quot;&gt;Our team’s problem statement&lt;/h4&gt;
 
 &lt;p&gt;GirlGuidesCanada is embarking on a massive change which will impact all of its members in some way, shape or form (~100k). Girls, parents, Guiders or other Sr. volunteers have no centralized way to share what they feel/think about the change and we have no way to hear, analyze and consolidate ‘the pulse’ of the field. We need a better way to get at this information to help us make decisions in real time!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/myplanet/2.jpg&quot; alt=&quot;MyPlanetCohort&quot; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -87,11 +85,10 @@
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/myplanet/3.jpg&quot; alt=&quot;MyPlanetCohortActivity&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 04 Sep 2017 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2017/09/04/myplanet/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/04/myplanet/</guid>
+        <link>http://chaodonghu.github.io/2017/09/04/myplanet/</link>
+        <guid isPermaLink="true">http://chaodonghu.github.io/2017/09/04/myplanet/</guid>
         
         <category>Portfolio</category>
         
@@ -131,8 +128,8 @@
 &lt;p&gt;&lt;a href=&quot;http://itineroo.herokuapp.com/&quot;&gt;Demo&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 08 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2017/07/08/itineroo/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/07/08/itineroo/</guid>
+        <link>http://chaodonghu.github.io/2017/07/08/itineroo/</link>
+        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/08/itineroo/</guid>
         
         <category>Portfolio</category>
         
@@ -168,8 +165,8 @@
 &lt;a href=&quot;https://github.com/chaodonghu/phaser_drake_pong&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 08 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2017/07/08/phaser-games/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/07/08/phaser-games/</guid>
+        <link>http://chaodonghu.github.io/2017/07/08/phaser-games/</link>
+        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/08/phaser-games/</guid>
         
         <category>Portfolio</category>
         
@@ -213,8 +210,8 @@
 &lt;p&gt;Poster presentation for the Canadian Physiotherapy Association describing the role of robotic exoskeletons in SCI rehabilitation. A narrative synthesis of published data regarding the safety and efficacy of the technology of exoskeletons.&lt;/p&gt;
 </description>
         <pubDate>Sat, 08 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2017/07/08/poster-presentations/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/07/08/poster-presentations/</guid>
+        <link>http://chaodonghu.github.io/2017/07/08/poster-presentations/</link>
+        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/08/poster-presentations/</guid>
         
         <category>Blog</category>
         
@@ -246,8 +243,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 04 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2017/07/04/chatty_app/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/07/04/chatty_app/</guid>
+        <link>http://chaodonghu.github.io/2017/07/04/chatty_app/</link>
+        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/04/chatty_app/</guid>
         
         <category>Portfolio</category>
         
@@ -277,8 +274,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 04 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2017/07/04/tweeter/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/07/04/tweeter/</guid>
+        <link>http://chaodonghu.github.io/2017/07/04/tweeter/</link>
+        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/04/tweeter/</guid>
         
         <category>Portfolio</category>
         
@@ -334,8 +331,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 04 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2017/07/04/tiny-url-shortener/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/07/04/tiny-url-shortener/</guid>
+        <link>http://chaodonghu.github.io/2017/07/04/tiny-url-shortener/</link>
+        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/04/tiny-url-shortener/</guid>
         
         <category>Portfolio</category>
         
@@ -385,8 +382,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 04 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2017/07/04/bonappetit_food_ordering/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/07/04/bonappetit_food_ordering/</guid>
+        <link>http://chaodonghu.github.io/2017/07/04/bonappetit_food_ordering/</link>
+        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/04/bonappetit_food_ordering/</guid>
         
         <category>Portfolio</category>
         
