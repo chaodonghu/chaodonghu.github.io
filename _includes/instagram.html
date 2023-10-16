@@ -1,16 +1,4 @@
 <style>
-  .nc-section {
-    background: none !important;
-  }
-
-  #instagram-feed > .nc-title {
-    display: none;
-  }
-
-  .nc-subtitle {
-    display: none !important;
-  }
-
   #seemore {
     align-items: center;
     display: flex;
@@ -25,7 +13,25 @@
 <script
   type="module"
   src="https://unpkg.com/@nocodeapi/embed-instagram-feed@latest/embed-instagram-feed.js?module"
-></script>
+>
+  document.querySelector('embed-instagram-feed')
+    .attachShadow({ mode: 'open' })
+    .innerHTML = `
+        <style>
+            :host-context(.parent-div) .nc-section .nc-title {
+                display:none
+            }
+        </style>
+        <div class="child-div">some random things</div>
+    `
+  // document.querySelector("embed-instagram-feed").shadowRoot.append(
+  //   Object.assign(document.createElement("STYLE"), {
+  //     innerText: `div.nc-title {
+  //       display:none !important
+  //     }`
+  //   })
+)
+</script>
 
 <div id="seemore">
   <div>
@@ -35,8 +41,9 @@
   </div>
 </div>
 
-<div id="instagram-feed">
+<div class='parent-div'>
   <embed-instagram-feed
     url="https://v1.nocodeapi.com/cdhu/instagram/WlMXCKwShAPxgKMy"
-  ></embed-instagram-feed>
+  />
 </div>
+
