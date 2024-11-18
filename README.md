@@ -3,6 +3,11 @@ Personal website built with Jekyll
 
 ### Installation
 
+1. Install gulp cli
+`npm install -g gulp-cli`
+
+2. `npm install`
+
 #### Without Docker
 `bundle install`/`bundle install --path vendor/bundle` to install all gems.
 
