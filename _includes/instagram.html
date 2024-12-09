@@ -1,0 +1,51 @@
+<style>
+  #seemore {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  #seemore a {
+    padding: 5px;
+  }
+</style>
+<script
+  type="module"
+  src="https://unpkg.com/@nocodeapi/embed-instagram-feed@latest/embed-instagram-feed.js?module"
+>
+  document.querySelector('embed-instagram-feed')
+    .attachShadow({ mode: 'open' })
+    .innerHTML = `
+        <style>
+            :host-context(.parent-div) .nc-section .nc-title {
+                display:none
+            }
+        </style>
+        <div class="child-div">some random things</div>
+    `
+  // document.querySelector("embed-instagram-feed").shadowRoot.append(
+  //   Object.assign(document.createElement("STYLE"), {
+  //     innerText: `div.nc-title {
+  //       display:none !important
+  //     }`
+  //   })
+)
+</script>
+
+<div id="seemore">
+  <div>
+    <a href="https://www.instagram.com/chaoarchive/" target="_blank"
+      ><i class="fa fa-instagram"> chaoarchive</i></a
+    >
+  </div>
+</div>
+
+<div class='parent-div'>
+  <embed-instagram-feed
+    title=""
+    subtitle=""
+    url="https://v1.nocodeapi.com/cdhu/instagram/WlMXCKwShAPxgKMy"
+  />
+</div>
+
