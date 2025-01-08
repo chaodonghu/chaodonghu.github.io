@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Abstracts/Poster Presentations"
-date: 2017-07-08
+date: 2017-04-30
 description: A list of abstracts and poster presentations that I contributed to throughout my undergrad.
 author: Dong Hu
 tags:

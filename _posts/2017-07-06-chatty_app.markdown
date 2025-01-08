@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Chatty - LiveChat App"
-date: 2017-07-04
+date: 2017-07-06
 description: A react application that allows users to have live conversations.
 author: Dong Hu
 ---
