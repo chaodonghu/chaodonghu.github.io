@@ -3,30 +3,175 @@
   <channel>
     <title>Dong Hu</title>
     <description></description>
-    <link>http://chaodonghu.github.io</link>
-    <atom:link href="http://chaodonghu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 07 Jan 2025 13:04:32 -0500</pubDate>
-    <lastBuildDate>Tue, 07 Jan 2025 13:04:32 -0500</lastBuildDate>
+    <link>http://localhost:4000</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 08 Jan 2025 15:27:20 -0500</pubDate>
+    <lastBuildDate>Wed, 08 Jan 2025 15:27:20 -0500</lastBuildDate>
     <generator>Jekyll v3.8.7</generator>
     
       <item>
+        <title>Zap Organization/Folder Name Suggestion using OpenAI</title>
+        <description>&lt;h4 id=&quot;problems&quot;&gt;Problem(s)&lt;/h4&gt;
+
+&lt;p&gt;I worked on the manage team at Zapier and a big problem we dealt with was Zap folders! Many group zaps into folders by workflow, so related Zaps are next to each other. What if we could look at the ZDL &amp;amp; titles of all the zaps group them by similarity and summarize what workflow these zaps target by suggesting a folder name suggestion for the grouping?&lt;/p&gt;
+
+&lt;p&gt;Based on a user input of how many folders or categories they want their zaps to be grouped into. We can leverage AI to look into the relationships for an account’s zaps, via intrinsic properties of their title, description and ZDL steps, and allow AI to form logical relationships between zaps for grouping.&lt;/p&gt;
+
+&lt;h4 id=&quot;solution&quot;&gt;Solution&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The concept of Embeddings can be abstract, but suffice to say an embedding is an information dense representation of the semantic meaning of a piece of text.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The OpenAI documentation states that embeddings are commonly used for &lt;a href=&quot;https://platform.openai.com/docs/guides/embeddings/what-are-embeddings&quot;&gt;clustering and recommendations&lt;/a&gt; which fits the main purpose of what I was trying to achieve. Clustering can be used to discover valuable, hidden groups of semantically similar sentences within bodies of data. The goal for me this hackathon was to explore these concepts and thankfully OpenAI provides an example of &lt;a href=&quot;https://github.com/openai/openai-cookbook/blob/main/examples/Clustering.ipynb&quot;&gt;clustering utilizing food review embeddings&lt;/a&gt; done in python which I tried to replicate&lt;/p&gt;
+
+&lt;h5 id=&quot;step-1-fetch-zaps-and-embed-them&quot;&gt;Step 1: Fetch zaps and embed them&lt;/h5&gt;
+
+&lt;p&gt;The first step was to fetch all the zaps for the account and create an embedding for each zap utilizing the &lt;a href=&quot;https://platform.openai.com/docs/guides/embeddings/what-are-embeddings&quot;&gt;OpenAI embedding API endpoint&lt;/a&gt;. In the code I’ve limited # of zaps fetched to 500.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.zappy.app/cc003154b44c7883c311ac1596d63d46.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Each embedding returned back is in &lt;a href=&quot;https://platform.openai.com/docs/guides/embeddings/second-generation-models&quot;&gt;1536 dimensions&lt;/a&gt; by default. I would have liked to store these embeddings into a vector database like pinecone but didn’t have time to implement the means of indexing then retrieving them.&lt;/p&gt;
+
+&lt;h5 id=&quot;step-2-convert-dimensionality&quot;&gt;Step 2: Convert dimensionality&lt;/h5&gt;
+
+&lt;p&gt;To visualize the embeddings in a 2D plot I had to convert each 1536 dimension vector into a 2 dimension vector. Following this &lt;a href=&quot;https://github.com/openai/openai-cookbook/blob/main/examples/Visualizing_embeddings_in_2D.ipynb&quot;&gt;guide&lt;/a&gt;, I utilized t-SNE decomposition and a open source &lt;a href=&quot;https://github.com/scienceai/tsne-js&quot;&gt;tsne-js package&lt;/a&gt; to reduce this dimensionality.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;1536 Dimensions&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.zappy.app/301ce6c9dbbadcd7c9e4785af5579e7d.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;2 Dimensions&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.zappy.app/195ebd0357af3bcb6f0ed195382fea57.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;step-3-cluster&quot;&gt;Step 3: Cluster&lt;/h5&gt;
+
+&lt;p&gt;I then had figure out how to cluster the data into groups. I utilized k-means clustering which is a algorithm that allows data to be grouped with varying granularity and sizes to discover the categories of groups in the unlabeled dataset on its own without the need for any training (&lt;a href=&quot;https://www.javatpoint.com/k-means-clustering-algorithm-in-machine-learning#:~:text=K%2DMeans%20Clustering%20is%20an%20Unsupervised%20Learning%20algorithm%2C%20which%20groups,three%20clusters%2C%20and%20so%20on.&quot;&gt;source&lt;/a&gt;). The “K” in k-means refers to the the number value we want to divide the dataset into (in this case the “# of categories”). I borrowed the code written in this &lt;a href=&quot;https://medium.com/geekculture/implementing-k-means-clustering-from-scratch-in-javascript-13d71fbcb31e&quot;&gt;article&lt;/a&gt; for implementing k-means clustering from scratch in javascript.&lt;/p&gt;
+
+&lt;p&gt;The k-means algorithm returned back a data structure containing an array of clusters (which equate to k/# of categories) with each cluster consisting of the points that make up that cluster and a 2-d coordinate of the centroid (mean coordinate of that cluster)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.zappy.app/90bfe79e0b5764ddaf09af290a33d77d.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;With these coordinates we can then plot it to visualize the clusters&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.zappy.app/8d3b82ebd8fc957bc764bfa580a9e022.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Each red point is a 2-d coordinate of the zap embedding and each green point is the mean of that cluster, in this case I passed in k=5 and 5 clusters are visualized in space&lt;/p&gt;
+
+&lt;h5 id=&quot;step-4-ask-openai-to-create-a-recommendation-on-how-to-name-each-cluster&quot;&gt;Step 4: Ask OpenAI to create a recommendation on how to name each cluster&lt;/h5&gt;
+
+&lt;p&gt;For each cluster/grouping of zaps we then give OpenAI the zap title, zap description and zdl steps for each zap with the prompt&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You are a Zapier expert. Use this array of zaps which have been group using the kMeans algorithm and each zap consisting of a title, description and ZDL steps and come up with a folder title to summarize each group of zaps. Each folder title should ideally be less than 100 words.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;groupings&quot;&gt;Groupings&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn.zappy.app/28a36bb749ec48d5cb981b386b3bdd7b.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The result is groups of zaps organized by embedding  along with a suggested folder name for each grouping!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.zappy.app/157e79806e22e632d9ee623b9e05fb06.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.zappy.app/6e96888f1de40bc4ea13516f97d1dc9e.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.zappy.app/6c4a1140269f55e14d3e14617de3d752.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;lessons-learned&quot;&gt;Lessons Learned&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It helped to understand the similarities between the embeddings by visualizing the clusters so I spent a good chunk of time trying to understand how to convert the dimensionality of the embeddings from 1536 to 2 in order to plot the embeddings. I still don’t fully understand how the t-SNE algorithm works but the OpenAI cookbook recommends it&lt;/li&gt;
+  &lt;li&gt;k-means algorithm was another concept that I used in this project but don’t fully grasp how it works, it provided the ability to implement clustering/group the embeddings but I would like to explore more into how the algorithm compares values&lt;/li&gt;
+  &lt;li&gt;I would have liked to play around with indexing and retrieving the embeddings from a vector database such as pinecone. When the dataset becomes extremely large (which I haven’t tested with) I predict that the in-memory storage of embeddings and zaps that I played around will probably timeout&lt;/li&gt;
+  &lt;li&gt;The documentation on OpenAI is fairly new so trying to translate and follow a guide written in python to javascript was difficult but fun to troubleshoot&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;recommendation--status&quot;&gt;Recommendation / Status&lt;/h4&gt;
+
+&lt;p&gt;This project is very bare bones (the UI/UX needs alot more work :sweat_smile:) but it does provide a proof of concept of what AI can do in terms of categorizing a large dataset and once given a prompt it has the ability to synthesize a name for each grouping. This work could provide a good base to work off in terms of giving folder name suggestions for users that have a bunch of zaps in their home folders that could benefit from being categorized into separate subfolders. :thinking:&lt;/p&gt;
+
+&lt;h4 id=&quot;tech-stack&quot;&gt;Tech Stack&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nextjs.org&quot;&gt;Next.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://next-auth.js.org&quot;&gt;NextAuth.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://platform.openai.com/docs/api-reference&quot;&gt;openai&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.pinecone.io/&quot;&gt;pinecone&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 17 Apr 2023 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2023/04/17/zap-organization-open-ai/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023/04/17/zap-organization-open-ai/</guid>
+        
+        
+      </item>
+    
+      <item>
         <title>Instagram Mass Follow, Unfollow, Like Scripts</title>
-        <description>&lt;p&gt;I had always wondered how businesses or influencers are able to gain hundreds of thousands of followers overnight. Many accounts go instantly viral after a certain tweet or post but I was curious if there was more to it. There are some accounts that have hundreds of thousands of followers but only one or two posts. I realized that there was this concept of “buying” instagram followers or likes, a pay for followers businesses that several companies offer by attracting real instagram users to your account instead of spam or bot accounts. Simply put, wouldn’t that just mean liking and following/unfollowing accounts that are similar to yours? This inspired me to make 3 scripts that were relatively easy to use and required zero setup and configuration to mimic this pay for followers/likes model.&lt;/p&gt;
+        <description>&lt;style&gt;
+/* Container to wrap the Gist */
+.gist-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Styling for the script tag wrapper (where the Gist code will appear) */
+.gist-container script {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* You can also add some padding and borders to the container to make it look better */
+.gist-container pre {
+    padding: 10px;
+    background-color: #f6f8fa;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-size: 16px;
+    color: #333;
+}
+&lt;/style&gt;
+
+&lt;p&gt;I had always wondered how businesses or influencers are able to gain hundreds of thousands of followers overnight. Many accounts go instantly viral after a certain tweet or post but I was curious if there was more to it. There are some accounts that have hundreds of thousands of followers but only one or two posts. I realized that there was this concept of “buying” instagram followers or likes, a pay for followers businesses that several companies offer by attracting real instagram users to your account instead of spam or bot accounts. Simply put, wouldn’t that just mean liking and following/unfollowing accounts that are similar to yours? This inspired me to make 3 scripts that were relatively easy to use and required zero setup and configuration to mimic this pay for followers/likes model.&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h4 id=&quot;mass-follow&quot;&gt;Mass follow&lt;/h4&gt;
+&lt;h4 id=&quot;mass-follow&quot;&gt;&lt;a href=&quot;https://gist.github.com/chaodonghu/c25c7ee3e3eb85c0a0de051892e596a4#file-follow-instagram-js&quot;&gt;Mass follow&lt;/a&gt;&lt;/h4&gt;
 
 &lt;p&gt;I started off thinking about how one could gain followers. There is a notion of following back users that have followed you, so what if you followed users of a certain page/account to garner similar interest. For example, following all the followers of a ontario hiking page would prompt the followed accounts to click on my account after I follow theirs. This simple engagement tactic would not guarantee a new follower but possibly a page hit or post like on your most recent posts.&lt;/p&gt;
 
 &lt;p&gt;I wanted to make the process as easy as possible with no overhead of running or hosting an app. I looked into a simple vanilla javascript script that clicks on the relevant elements in the DOM which could be copy and pasted into the google chrome console. A simple timeout that is configurable would help to throttle the number of follows/clicks on the page to bypass instagram’s bot detection.&lt;/p&gt;
 
-&lt;script src=&quot;https://gist.github.com/chaodonghu/c25c7ee3e3eb85c0a0de051892e596a4.js&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;gist-container&quot;&gt;
+    &lt;script src=&quot;https://gist.github.com/chaodonghu/c25c7ee3e3eb85c0a0de051892e596a4.js&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
 
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;mass-unfollow&quot;&gt;&lt;a href=&quot;https://gist.github.com/chaodonghu/c942b6ca8f8c247ccacd3b0123ff3580&quot;&gt;Mass unfollow&lt;/a&gt;&lt;/h4&gt;
+
+&lt;div class=&quot;gist-container&quot;&gt;
+    &lt;script src=&quot;https://gist.github.com/chaodonghu/c942b6ca8f8c247ccacd3b0123ff3580.js&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;mass-like&quot;&gt;&lt;a href=&quot;https://gist.github.com/chaodonghu/e4775571f30b2b0f990d0759822ba4c1&quot;&gt;Mass like&lt;/a&gt;&lt;/h4&gt;
+
+&lt;div class=&quot;gist-container&quot;&gt;
+    &lt;script src=&quot;https://gist.github.com/chaodonghu/e4775571f30b2b0f990d0759822ba4c1.js&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Apr 2022 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2022/04/11/instagram-scripts/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2022/04/11/instagram-scripts/</guid>
+        <link>http://localhost:4000/2022/04/11/instagram-scripts/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/04/11/instagram-scripts/</guid>
         
         
       </item>
@@ -85,8 +230,8 @@
 
 </description>
         <pubDate>Mon, 04 Sep 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/09/04/myplanet/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/09/04/myplanet/</guid>
+        <link>http://localhost:4000/2017/09/04/myplanet/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/09/04/myplanet/</guid>
         
         
       </item>
@@ -124,88 +269,8 @@
 &lt;p&gt;&lt;a href=&quot;http://itineroo.herokuapp.com/&quot;&gt;Demo&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 08 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/08/itineroo/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/08/itineroo/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Drake Themed 2D-Pong/2D-Asteroids</title>
-        <description>&lt;p&gt;I wanted to dabble into game development however didn’t want to start with a heavy game engine like Unity or Unreal engine. I decided to look into web games and came across a javascript library called &lt;a href=&quot;https://phaser.io/&quot;&gt;phaser.js&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;It’s a pretty cool open source framework to make canvas and WebGL powered browser games. I decided to dabble into some sprite making and make some Drake themed classics.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;asteroids-game---drake-edition&quot;&gt;Asteroids Game - Drake Edition&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/drake_phaser/asteroids1.png&quot; alt=&quot;asteroids_1&quot; width=&quot;400&quot; /&gt;
-&lt;img src=&quot;/assets/images/drake_phaser/asteroids2.png&quot; alt=&quot;asteroids_2&quot; width=&quot;400&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://chaodonghu.github.io/phaser_drake_asteroids/&quot;&gt;Demo&lt;/a&gt;
-&lt;a href=&quot;https://github.com/chaodonghu/phaser_drake_asteroids&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;pong-game---drake-edition&quot;&gt;Pong Game - Drake Edition&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/drake_phaser/pong1.png&quot; alt=&quot;pong_1&quot; width=&quot;400&quot; /&gt;
-&lt;img src=&quot;/assets/images/drake_phaser/pong2.png&quot; alt=&quot;pong_2&quot; width=&quot;400&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://chaodonghu.github.io/phaser_drake_pong/&quot;&gt;Demo&lt;/a&gt;
-&lt;a href=&quot;https://github.com/chaodonghu/phaser_drake_pong&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 08 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/08/phaser-games/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/08/phaser-games/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Abstracts/Poster Presentations</title>
-        <description>&lt;p&gt;A list of abstracts and poster presentations that I either made or contributed to during my undergraduate degree in Kinesiology at the University of Waterloo.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;canadian-frailty-network-summer-student-award-presentation&quot;&gt;Canadian Frailty Network Summer Student Award Presentation&lt;/h4&gt;
-
-&lt;object data=&quot;/assets/images/posters/CFN_Poster_Dong_April182017.pdf&quot; type=&quot;application/pdf&quot;&gt;
-&lt;/object&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Poster presentation summarizing summer student award received to pursue study that aimed to investigate the effectiveness of the pharmacist intervention on the use of polypharmacy, high-risk medication use and gastrointestinal protection among frail elderly who underwent a pharmacist intervention in comparison to frail elderly who declined a pharmacist intervention at the Centre for Family Medicine Health Team.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;pharmacist-interventions-for-a-frail-elderly-population-in-primary-care---june-6-2016&quot;&gt;Pharmacist Interventions for a Frail Elderly Population in Primary Care - June 6 2016&lt;/h4&gt;
-
-&lt;object data=&quot;/assets/images/posters/CPHA_Poster_June62016.pdf&quot; type=&quot;application/pdf&quot;&gt;
-&lt;/object&gt;
-&lt;hr /&gt;
-
-&lt;p&gt;Poster presentation for the Canadian Pharmacists Conference summarizing pharmacist interventions for a frail elderly population in primary care.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;the-role-of-robotic-exoskeletons-in-sci-rehabilitation---june-19-2015&quot;&gt;The Role of Robotic Exoskeletons in SCI Rehabilitation - June 19 2015&lt;/h4&gt;
-
-&lt;object data=&quot;/assets/images/posters/CPA_June19202015.pdf&quot; type=&quot;application/pdf&quot;&gt;
-&lt;/object&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Poster presentation for the Canadian Physiotherapy Association describing the role of robotic exoskeletons in SCI rehabilitation. A narrative synthesis of published data regarding the safety and efficacy of the technology of exoskeletons.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 08 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/08/poster-presentations/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/08/poster-presentations/</guid>
-        
-        <category>Blog</category>
+        <link>http://localhost:4000/2017/07/08/itineroo/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/08/itineroo/</guid>
         
         
       </item>
@@ -217,6 +282,8 @@
 &lt;hr /&gt;
 
 &lt;h4 id=&quot;project-walkthrough&quot;&gt;Project Walkthrough&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/chatty/1.png&quot; alt=&quot;ChattyApp&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Each user is able to send a chat message that is subsequently broadcasted to all connected users. Connected users are able to paste in urls ending with jpg, png, gif in a message to display the images in the chat.&lt;/p&gt;
 
@@ -234,9 +301,9 @@
   &lt;li&gt;Stack used: React, Node.js, Express, Websockets&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Tue, 04 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/04/chatty_app/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/04/chatty_app/</guid>
+        <pubDate>Thu, 06 Jul 2017 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2017/07/06/chatty_app/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/06/chatty_app/</guid>
         
         
       </item>
@@ -264,8 +331,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 04 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/04/tweeter/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/04/tweeter/</guid>
+        <link>http://localhost:4000/2017/07/04/tweeter/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/04/tweeter/</guid>
         
         
       </item>
@@ -319,8 +386,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 04 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/04/tiny-url-shortener/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/04/tiny-url-shortener/</guid>
+        <link>http://localhost:4000/2017/07/04/tiny-url-shortener/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/04/tiny-url-shortener/</guid>
         
         
       </item>
@@ -368,8 +435,88 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 04 Jul 2017 00:00:00 -0400</pubDate>
-        <link>http://chaodonghu.github.io/2017/07/04/bonappetit_food_ordering/</link>
-        <guid isPermaLink="true">http://chaodonghu.github.io/2017/07/04/bonappetit_food_ordering/</guid>
+        <link>http://localhost:4000/2017/07/04/bonappetit_food_ordering/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/04/bonappetit_food_ordering/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Drake Themed 2D-Pong/2D-Asteroids</title>
+        <description>&lt;p&gt;I wanted to dabble into game development however didn’t want to start with a heavy game engine like Unity or Unreal engine. I decided to look into web games and came across a javascript library called &lt;a href=&quot;https://phaser.io/&quot;&gt;phaser.js&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It’s a pretty cool open source framework to make canvas and WebGL powered browser games. I decided to dabble into some sprite making and make some Drake themed classics.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;asteroids-game---drake-edition&quot;&gt;Asteroids Game - Drake Edition&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/drake_phaser/asteroids1.png&quot; alt=&quot;asteroids_1&quot; width=&quot;400&quot; /&gt;
+&lt;img src=&quot;/assets/images/drake_phaser/asteroids2.png&quot; alt=&quot;asteroids_2&quot; width=&quot;400&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://chaodonghu.github.io/phaser_drake_asteroids/&quot;&gt;Demo&lt;/a&gt;
+&lt;a href=&quot;https://github.com/chaodonghu/phaser_drake_asteroids&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;pong-game---drake-edition&quot;&gt;Pong Game - Drake Edition&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/drake_phaser/pong1.png&quot; alt=&quot;pong_1&quot; width=&quot;400&quot; /&gt;
+&lt;img src=&quot;/assets/images/drake_phaser/pong2.png&quot; alt=&quot;pong_2&quot; width=&quot;400&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://chaodonghu.github.io/phaser_drake_pong/&quot;&gt;Demo&lt;/a&gt;
+&lt;a href=&quot;https://github.com/chaodonghu/phaser_drake_pong&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 21 Jun 2017 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2017/06/21/phaser-games/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/06/21/phaser-games/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Abstracts/Poster Presentations</title>
+        <description>&lt;p&gt;A list of abstracts and poster presentations that I either made or contributed to during my undergraduate degree in Kinesiology at the University of Waterloo.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;canadian-frailty-network-summer-student-award-presentation&quot;&gt;Canadian Frailty Network Summer Student Award Presentation&lt;/h4&gt;
+
+&lt;object data=&quot;/assets/images/posters/CFN_Poster_Dong_April182017.pdf&quot; type=&quot;application/pdf&quot;&gt;
+&lt;/object&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Poster presentation summarizing summer student award received to pursue study that aimed to investigate the effectiveness of the pharmacist intervention on the use of polypharmacy, high-risk medication use and gastrointestinal protection among frail elderly who underwent a pharmacist intervention in comparison to frail elderly who declined a pharmacist intervention at the Centre for Family Medicine Health Team.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;pharmacist-interventions-for-a-frail-elderly-population-in-primary-care---june-6-2016&quot;&gt;Pharmacist Interventions for a Frail Elderly Population in Primary Care - June 6 2016&lt;/h4&gt;
+
+&lt;object data=&quot;/assets/images/posters/CPHA_Poster_June62016.pdf&quot; type=&quot;application/pdf&quot;&gt;
+&lt;/object&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Poster presentation for the Canadian Pharmacists Conference summarizing pharmacist interventions for a frail elderly population in primary care.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;the-role-of-robotic-exoskeletons-in-sci-rehabilitation---june-19-2015&quot;&gt;The Role of Robotic Exoskeletons in SCI Rehabilitation - June 19 2015&lt;/h4&gt;
+
+&lt;object data=&quot;/assets/images/posters/CPA_June19202015.pdf&quot; type=&quot;application/pdf&quot;&gt;
+&lt;/object&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Poster presentation for the Canadian Physiotherapy Association describing the role of robotic exoskeletons in SCI rehabilitation. A narrative synthesis of published data regarding the safety and efficacy of the technology of exoskeletons.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 30 Apr 2017 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2017/04/30/poster-presentations/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/04/30/poster-presentations/</guid>
+        
+        <category>Blog</category>
         
         
       </item>
