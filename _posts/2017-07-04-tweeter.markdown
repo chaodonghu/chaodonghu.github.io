@@ -3,7 +3,6 @@ layout: post
 title: "Tweeter - Twitter Clone App"
 date: 2017-07-04
 description: A single page twitter clone developed with Node.js and MongoDB.
-image: /assets/images/tweeter/1.png
 author: Dong Hu
 ---
 As part of the course curriculum at [Lighthouse Labs](https://www.lighthouselabs.ca/), we dove into databases as well as basic jQuery by developing a twitter clone that leverages a Node.js backend and storing tweets to be later retrieved on a single page through MongoDB.

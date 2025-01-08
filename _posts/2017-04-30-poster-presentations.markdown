@@ -3,7 +3,6 @@ layout: post
 title: "Abstracts/Poster Presentations"
 date: 2017-07-08
 description: A list of abstracts and poster presentations that I contributed to throughout my undergrad.
-image:
 author: Dong Hu
 tags:
   - Blog

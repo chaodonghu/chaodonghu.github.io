@@ -3,7 +3,6 @@ layout: post
 title: "Bon Appetit - Food Ordering App"
 date: 2017-07-04
 description: A food pick-up ordering app built for an icecream parlor but scalable to include multiple restaurants. Built as a midterm project at Lighthouse Labs with a team of 3.
-image: /assets/images/bon_appetit/bonappetit.png
 author: Dong Hu
 ---
 As part of my midterm project at [Lighthouse Labs](https://www.lighthouselabs.ca/), I built a food pick-up ordering app resembling UberEats for a theoretical icecream parlor. The app allows a customer(user) to place an order and a restaurant to notify the user the status of their order via a dynamic order status page and text message notification.

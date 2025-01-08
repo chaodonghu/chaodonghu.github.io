@@ -3,7 +3,6 @@ layout: post
 title: "Girl Guides Canada - Sentiment Analysis App"
 date: 2017-09-04
 description: Real-time twitter feed POC that allows users to filter by key words, tags or twitter handles and analyze the sentiment of each tweet for the Girl Guides of Canada.
-image: /assets/images/myplanet/download.png
 author: Dong Hu
 ---
 I was apart of the [Myplanet now Orium](https://orium.com/) 2017 [fellowship](https://blog.orium.com/myplanet-fellowship-2-0-e71c46c28364) class which gave 18 students a real, hands-on experience with agile, as well as the ability to implement AI and the latest development platforms to build a product for a non-for-profit/charity.

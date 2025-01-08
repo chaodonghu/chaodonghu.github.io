@@ -3,7 +3,6 @@ layout: post
 title: "Drake Themed 2D-Pong/2D-Asteroids"
 date: 2017-07-08
 description: Classic 2D games clones made with phaser.js.
-image: /assets/images/drake_phaser/asteroids1.png
 author: Dong Hu
 ---
 I wanted to dabble into game development however didn't want to start with a heavy game engine like Unity or Unreal engine. I decided to look into web games and came across a javascript library called [phaser.js](https://phaser.io/).
