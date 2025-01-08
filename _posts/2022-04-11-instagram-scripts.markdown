@@ -40,7 +40,7 @@ I had always wondered how businesses or influencers are able to gain hundreds of
 
 <hr />
 
-#### [Mass follow](https://gist.github.com/chaodonghu/c25c7ee3e3eb85c0a0de051892e596a4#file-follow-instagram-js)
+#### [Mass follow script](https://gist.github.com/chaodonghu/c25c7ee3e3eb85c0a0de051892e596a4#file-follow-instagram-js)
 
 I started off thinking about how one could gain followers. There is a notion of following back users that have followed you, so what if you followed users of a certain page/account to garner similar interest. For example, following all the followers of a ontario hiking page would prompt the followed accounts to click on my account after I follow theirs. This simple engagement tactic would not guarantee a new follower but possibly a page hit or post like on your most recent posts.
 
@@ -52,7 +52,7 @@ I wanted to make the process as easy as possible with no overhead of running or 
 
 <hr />
 
-#### [Mass unfollow](https://gist.github.com/chaodonghu/c942b6ca8f8c247ccacd3b0123ff3580)
+#### [Mass unfollow script](https://gist.github.com/chaodonghu/c942b6ca8f8c247ccacd3b0123ff3580)
 
  <div class="gist-container">
     <script src="https://gist.github.com/chaodonghu/c942b6ca8f8c247ccacd3b0123ff3580.js"></script>
@@ -60,7 +60,7 @@ I wanted to make the process as easy as possible with no overhead of running or 
 
 <hr />
 
-#### [Mass like](https://gist.github.com/chaodonghu/e4775571f30b2b0f990d0759822ba4c1)
+#### [Mass like script](https://gist.github.com/chaodonghu/e4775571f30b2b0f990d0759822ba4c1)
 
  <div class="gist-container">
     <script src="https://gist.github.com/chaodonghu/e4775571f30b2b0f990d0759822ba4c1.js"></script>
