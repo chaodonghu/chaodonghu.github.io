@@ -20,6 +20,7 @@ A list of abstracts and poster presentations that I either made or contributed t
 
 Poster presentation summarizing summer student award received to pursue study that aimed to investigate the effectiveness of the pharmacist intervention on the use of polypharmacy, high-risk medication use and gastrointestinal protection among frail elderly who underwent a pharmacist intervention in comparison to frail elderly who declined a pharmacist intervention at the Centre for Family Medicine Health Team.
 
+
 <hr />
 
 #### Pharmacist Interventions for a Frail Elderly Population in Primary Care - June 6 2016
